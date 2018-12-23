@@ -3,10 +3,15 @@ import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import todoApp from './data/reducers';
+import {fetchTodos} from './data/actions';
+import thunk from 'redux-thunk';
 
-const store = createStore(todoApp);
+const store = createStore(todoApp, applyMiddleware(thunk));
+
+store
+  .dispatch(fetchTodos());
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, 
 document.getElementById('root'));

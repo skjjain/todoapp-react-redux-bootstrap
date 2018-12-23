@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ListGroup, HelpBlock, Panel, PageHeader } from 'react-bootstrap';
+import { FormGroup, FormControl, ListGroup, HelpBlock, Panel, PageHeader, ProgressBar} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {addTodo, removeTodo, doneTodo} from '../data/actions';
 import TaskItem from '../components/taskItem';
@@ -38,6 +38,9 @@ class Home extends Component{
 
 
     renderTodos = (todos, type = 'pending') => {
+        if(this.props.loading){
+            return (<Panel.Body><ProgressBar bsStyle="success" active now={100} label='Loading...' /></Panel.Body>);
+        }
         if(todos.length === 0){
             if(type === 'pending'){
                 return (<Panel.Body>No task added!!!</Panel.Body>);

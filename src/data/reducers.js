@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import {ADD_TODO,REM_TODO, LIST_TODO, DONE_TODO} from './actions';
-const initialState = {todos:[], task:'', todos_completed:[], error:false, errorInfo:''};
+import {ADD_TODO,REM_TODO, LOADING, DONE_TODO,ALL_TODOS} from './actions';
+const initialState = {todos:[], task:'', todos_completed:[], error:false, errorInfo:'', loading:false};
 function todoActions(state = initialState, action){
-    let newState = {...state};
+    const newState = {...state};
     switch(action.type){
         case ADD_TODO: 
             
@@ -17,7 +17,7 @@ function todoActions(state = initialState, action){
                 newState.error = true;
                 newState.errorInfo = 'Task is already added!!!';
             }
-            return newState;
+        break;
         
 
         case REM_TODO: 
@@ -28,23 +28,33 @@ function todoActions(state = initialState, action){
                 newState.todos = newState.todos.filter(i => i !== action.payload.text);
             }
             
-            return newState;
+        break;
         
 
         case DONE_TODO: 
             
             newState.todos = newState.todos.filter(i => i !== action.payload);
             newState.todos_completed = [...newState.todos_completed,action.payload];
-            return newState;
-        
+            
 
-        case LIST_TODO: 
-            return state;
+        break;
+
+        case LOADING: 
+            newState.loading = true;
+        break;
+
+        case ALL_TODOS: 
+            newState.todos = action.payload.pending;
+            newState.todos_completed = action.payload.completed;
+            newState.loading = false;
+        break;
         
         default : {
             return state;
         }
+        
     }
+    return newState;
 }
 
 
