@@ -1,3 +1,6 @@
+## Demo
+Open [Demo Link](https://s3.ap-south-1.amazonaws.com/saurabhjain.info/todoapp/index.html) to view it in the browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
