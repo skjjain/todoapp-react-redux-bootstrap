@@ -1,0 +1,6 @@
+{
+    "todos":{
+        "pending":["JS Training", "Project Submission"],
+        "completed":["JS Project Enrollment"]
+    }
+}
