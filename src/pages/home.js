@@ -58,7 +58,7 @@ class Home extends Component{
         return (
             <div>
                 <PageHeader>
-                    Todo App <small>React+Redux+Bootstrap</small>
+                    Todo App <small>React+Redux+Bootstrap+Thunk</small>
                 </PageHeader>
                 <form className="form" onSubmit={this.submitForm}>
                     <FormGroup validationState={this.getValidationState()}>
